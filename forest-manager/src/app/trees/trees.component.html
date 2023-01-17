@@ -1,0 +1,27 @@
+<h1>Damaged Trees</h1>
+
+<table>
+  <tr>
+    <td>X</td>
+    <td>Y</td>
+    <td>Examine</td>
+  </tr>
+  <tr *ngFor="let item of dronesService.damagedTrees">
+    <td>{{item.x}}</td>
+    <td>{{item.y}}</td>
+    <td><button (click)="examineTree(item.x, item.y)" (click)="dronesService.getNearestTree(dronesService.myPosition.x, dronesService.myPosition.y)">examine</button></td>
+  </tr>
+</table>
+
+<h2>Nearest Damaged Tree</h2>
+
+<div>
+  <p><b>X: {{dronesService.nearestTree.x}} </b></p>
+  <b>Y: {{dronesService.nearestTree.y}} </b>
+</div>
+
+<div>
+  <h3>Path:</h3>
+  <p><b>Y: {{dronesService.nearestTreeDistance.x}}</b></p>
+  <b>X: {{dronesService.nearestTreeDistance.y}}</b>
+</div>

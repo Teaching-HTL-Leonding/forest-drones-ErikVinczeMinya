@@ -1,0 +1,25 @@
+<h1>Current location</h1>
+<b>X: {{drone?.position?.x}} </b>
+<b>Y: {{drone?.position?.y}} </b>
+
+<h1>Commands</h1>
+<div>
+  <button [disabled]="drone?.isActive" (click)="activateDrone()">Activate</button>
+  <button [disabled]="!drone?.isActive" (click)="shutdownDrone()">Shutdown</button>
+</div>
+<div>
+  <button [disabled]="x === 0 || y===0" (click)="flyTo(x,y)">GO TO</button>
+  <b>X:</b>
+  <input type="number" [(ngModel)]="x" required min="-750" max="750">
+  <b>Y:</b>
+  <input type="number" [(ngModel)]="y" required min="-750" max="750">
+</div>
+<div>
+  <button [disabled]="!drone?.isActive" (click)="scan()">SCAN</button>
+  <a [hidden]="scanDone === false" class="green">Scan Done! Check Trees Examined!</a>
+</div>
+
+<h3>Shortcut</h3>
+
+<a class="grey">Fly drone to my position, scan the area and get me the nearest tree</a>
+<button (click)="flyToScanGetNearestTree()">Execute</button>
